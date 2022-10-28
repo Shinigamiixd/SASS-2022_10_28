@@ -1,0 +1,85 @@
+@import "variables", "mixins";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+body {
+    background-color: $primary-color;
+    max-width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+
+    #toggle {
+        display: none;
+    }
+}
+
+.hamburger {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 2em;
+    height: 45px;
+    z-index: 100;
+}
+
+.hamburger div {
+    position: relative;
+    width: 33px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: $menu-color;
+    margin-top: 6px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: $secondary-color;
+    top: -100%;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    transform: scale(0);
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+nav a {
+    position: relative;
+    text-decoration: none;
+    color: $menu-color;
+    font-family: "Poppins", sans-serif;
+    font-size: 38px;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: $text-hover-color;
+        font-size: 40px;
+    }
+}
+
+#toggle:checked+.hamburger .top-bun {
+    transform: rotate(-45deg);
+    margin-top: 25px;
+}
+
+#toggle:checked+.hamburger .bottom-bun {
+    opacity: 0;
+    transform: rotate(315deg);
+}
+
+#toggle:checked+.hamburger .meat {
+    transform: rotate(405deg);
+    margin-top: -5px;
+}
+
+#toggle:checked+.hamburger+.navbar {
+    top: 0;
+    transform: scale(1);
+}
